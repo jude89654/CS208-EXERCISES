@@ -1,5 +1,4 @@
 import java.awt.*;
-import java.awt.geom.GeneralPath;
 import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
@@ -7,7 +6,7 @@ import java.util.ArrayList;
 /**
  * Created by jude8 on 2/3/2017.
  */
-public class Mario extends Frame {
+public class MarioVer1 extends Frame {
     static int height = 640;
     static int width = height;
     static int framePixelHeight = 30;
@@ -443,10 +442,10 @@ public class Mario extends Frame {
 
 
     public static void main(String args[]) {
-        Mario mario = new Mario();
-        //mario.setTitle("MARIO");
-        mario.setSize(width, height);
-        mario.setVisible(true);
+        MarioVer1 marioVer1 = new MarioVer1();
+        //marioVer1.setTitle("MARIO");
+        marioVer1.setSize(width, height);
+        marioVer1.setVisible(true);
     }
 
 }
