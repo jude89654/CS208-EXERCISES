@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * Created by jude8 on 2/3/2017.
  */
 public class MarioVer2 extends Frame {
-    static int height = 640;
+    static int height = 512;
     static int width = height;
     static int framePixelHeight = 30;
     static int framePixelWidth = 30;
@@ -505,36 +505,24 @@ public class MarioVer2 extends Frame {
             blackrect.add(createIntegerArray(x, 24));
         }
         //line 25
-        for (int i = 4; i <= 11; i++) {
-            blackrect.add(createIntegerArray(i, 25));
-        }
+        for (int i = 4; i <= 11; i++) blackrect.add(createIntegerArray(i, 25));
 
-        for (int i = 14; i <= 22; i++) {
-            blackrect.add(createIntegerArray(i, 25));
-        }
-        for (int i = 26; i <= 26; i++) {
-            blackrect.add(createIntegerArray(i, 25));
-        }
+        for (int i = 14; i <= 22; i++) blackrect.add(createIntegerArray(i, 25));
+        for (int i = 26; i <= 26; i++) blackrect.add(createIntegerArray(i, 25));
+
         //line 26
-        for (int x : new int[]{11, 14, 15, 16, 17, 22, 25, 26}) {
-            blackrect.add(createIntegerArray(x, 26));
-        }
+        for (int x : new int[]{11, 14, 15, 16, 17, 22, 25, 26}) blackrect.add(createIntegerArray(x, 26));
         //line 27
         for (int x : new int[]{11, 14, 23, 24, 25}) blackrect.add(createIntegerArray(x, 27));
         //line 28
         for (int x : new int[]{11, 12, 13}) blackrect.add(createIntegerArray(x, 28));
 
         //used for filling the black background
-        for (Integer[] blackDoubleArray :
-                blackrect) {
+        for (Integer[] blackDoubleArray : blackrect) {
             g2d.fill(createRect(blackDoubleArray[0], blackDoubleArray[1]));
-           g2d.draw(createRect(blackDoubleArray[0], blackDoubleArray[1]));
+            g2d.draw(createRect(blackDoubleArray[0], blackDoubleArray[1]));
 
         }
-
-
-
-
 
 
     }
@@ -549,8 +537,6 @@ public class MarioVer2 extends Frame {
     }
 
     public Integer[] createIntegerArray(Integer... y) {
-        //Double[] coordinates= new Double[y.length];
-
         return y;
     }
 
