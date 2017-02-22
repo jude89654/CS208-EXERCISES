@@ -3,6 +3,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
+
 import java.util.ArrayList;
 
 /**
@@ -17,6 +18,8 @@ public class MarioVer1 extends Frame {
     static Color black = Color.BLACK;
     static Color orange = Color.PINK;
     static Color red = Color.RED;
+
+
 
 
     public void paint(Graphics g) {
@@ -309,12 +312,12 @@ public class MarioVer1 extends Frame {
             blackRect.add(createIntegerArray(i, 17));
         }
         //line 18
-        for (int i = 18; i <= 19; i++) {
+        for (int i = 18; i <= 19; i++)
             blackRect.add(createIntegerArray(i, 18));
-        }
-        for (int i = 22; i <= 23; i++) {
+
+        for (int i = 22; i <= 23; i++)
             blackRect.add(createIntegerArray(i, 18));
-        }
+
         blackRect.add(createIntegerArray(8, 18));
         blackRect.add(createIntegerArray(13, 18));
         blackRect.add(createIntegerArray(26, 18));
@@ -345,41 +348,39 @@ public class MarioVer1 extends Frame {
         for (int i = 21; i <= 22; i++) {
             blackRect.add(createIntegerArray(i, 21));
         }
-        for (int i = 24; i <= 25; i++) {
+        for (int i = 24; i <= 25; i++)
             blackRect.add(createIntegerArray(i, 21));
-        }
-        //line 22
-        for (int i = 3; i <= 3; i++) {
-            blackRect.add(createIntegerArray(i, 22));
-        }
-        for (int i = 13; i <= 18; i++) {
-            blackRect.add(createIntegerArray(i, 22));
-        }
-        for (int i = 21; i <= 23; i++) {
-            blackRect.add(createIntegerArray(i, 22));
-        }
-        for (int i = 26; i <= 26; i++) {
-            blackRect.add(createIntegerArray(i, 22));
-        }
-        //line 23
-        for (int x : new int[]{3, 12, 15, 16, 17, 18, 19, 20, 21, 22, 26}) {
-            blackRect.add(createIntegerArray(x, 23));
-        }
-        //line 24
-        for (int x : new int[]{3, 4, 11, 12, 14, 15, 16, 17, 18, 19, 20, 21, 22, 26}) {
-            blackRect.add(createIntegerArray(x, 24));
-        }
-        //line 25
-        for (int i = 4; i <= 11; i++) {
-            blackRect.add(createIntegerArray(i, 25));
-        }
 
-        for (int i = 14; i <= 22; i++) {
+        //line 22
+        for (int i = 3; i <= 3; i++)
+            blackRect.add(createIntegerArray(i, 22));
+
+        for (int i = 13; i <= 18; i++)
+            blackRect.add(createIntegerArray(i, 22));
+
+        for (int i = 21; i <= 23; i++)
+            blackRect.add(createIntegerArray(i, 22));
+
+        for (int i = 26; i <= 26; i++)
+            blackRect.add(createIntegerArray(i, 22));
+        //line 23
+        for (int x : new int[]{3, 12, 15, 16, 17, 18, 19, 20, 21, 22, 26})
+            blackRect.add(createIntegerArray(x, 23));
+
+        //line 24
+        for (int x : new int[]{3, 4, 11, 12, 14, 15, 16, 17, 18, 19, 20, 21, 22, 26})
+            blackRect.add(createIntegerArray(x, 24));
+
+        //line 25
+        for (int i = 4; i <= 11; i++)
             blackRect.add(createIntegerArray(i, 25));
-        }
-        for (int i = 26; i <= 26; i++) {
+
+        for (int i = 14; i <= 22; i++)
             blackRect.add(createIntegerArray(i, 25));
-        }
+
+        for (int i = 26; i <= 26; i++)
+            blackRect.add(createIntegerArray(i, 25));
+
         //line 26
         for (int x : new int[]{11, 14, 15, 16, 17, 22, 25, 26})
             blackRect.add(createIntegerArray(x, 26));

@@ -1,4 +1,6 @@
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
@@ -8,32 +10,23 @@ import java.util.ArrayList;
  * Created by jude8 on 2/3/2017.
  */
 public class MarioVer2 extends Frame {
-    static int height = 512;
+    static int height =512;
     static int width = height;
     static int framePixelHeight = 30;
     static int framePixelWidth = 30;
     static double scale = height / framePixelHeight;
     static Color black = Color.pink;
-    static Color orange = Color.PINK;
+    static Color orange = new Color(252,225,204);
     static Color red = Color.RED;
 
 
     public void paint(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
-        // g2d.setPaint(Color.black);
-        //for testing
-        /*for(int x = 1; x<framePixelWidth-1;x++){
-            for(int y =2; y<framePixelHeight-1;y++) {
-                g2d.setFont(new Font("Comic Sans MS",Font.PLAIN,8));
-                g2d.drawString(x+","+y,(float)(x*scale),(float)(y*scale));
-                Rectangle2D.Double rectangles = new Rectangle2D.Double(x*scale,y*scale,scale,scale);
-                g2d.draw(rectangles);
-            }
-        }*/
 
         g2d.setBackground(Color.ORANGE);
         BasicStroke basicStroke = new BasicStroke(3.0f);
         g2d.setStroke(basicStroke);
+        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
 
         //strokes for orange
         g2d.setColor(orange);
@@ -477,25 +470,19 @@ public class MarioVer2 extends Frame {
         for (int i = 11; i <= 18; i++) {
             blackrect.add(createIntegerArray(i, 21));
         }
-        for (int i = 21; i <= 22; i++) {
+        for (int i = 21; i <= 22; i++)
             blackrect.add(createIntegerArray(i, 21));
-        }
-        for (int i = 24; i <= 25; i++) {
+        for (int i = 24; i <= 25; i++)
             blackrect.add(createIntegerArray(i, 21));
-        }
         //line 22
-        for (int i = 3; i <= 3; i++) {
+        for (int i = 3; i <= 3; i++)
             blackrect.add(createIntegerArray(i, 22));
-        }
-        for (int i = 13; i <= 18; i++) {
+        for (int i = 13; i <= 18; i++)
             blackrect.add(createIntegerArray(i, 22));
-        }
-        for (int i = 21; i <= 23; i++) {
+        for (int i = 21; i <= 23; i++)
             blackrect.add(createIntegerArray(i, 22));
-        }
-        for (int i = 26; i <= 26; i++) {
+        for (int i = 26; i <= 26; i++)
             blackrect.add(createIntegerArray(i, 22));
-        }
         //line 23
         for (int x : new int[]{3, 12, 15, 16, 17, 18, 19, 20, 21, 22, 26}) {
             blackrect.add(createIntegerArray(x, 23));
@@ -546,7 +533,15 @@ public class MarioVer2 extends Frame {
         //mario.setTitle("MARIO");
         mario.setSize(width, height);
         mario.setVisible(true);
-        mario.setBackground(Color.ORANGE);
+   //     mario.setBackground(Color.ORANGE);
+
+        mario.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                super.windowClosing(e);
+                System.exit(0);
+            }
+        });
     }
 
 }
