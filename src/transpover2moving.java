@@ -1,5 +1,6 @@
 
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -7,33 +8,78 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.geom.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
  * Created by jude8 on 2/7/2017.
  */
-public class transpover2movingna extends JPanel implements ActionListener {
+public class transpover2moving extends JPanel implements ActionListener {
 
 
-    Timer t = new Timer(100,this);
+    //timer that will trigger the ActionEvent in this
+    Timer t = new Timer(10,this);
 
-    int x = 0;
-    double height = 400;
-    double picHeight = 560;
-    double picWidth = 906;
+
+
+
+    /**
+     * starting pixel of the car
+     */
+    int x = 0,y = 0;
+    /**
+     * number of pixels will move from x every repaint
+     */
+    int xspeed = 2;
+
+
+    /**
+     * resolution of the original image
+     */
+
+    double picHeight = 560, picWidth = 960;
+
+    /**
+     * aspect ratio of the original image
+     */
     double aspectratio = picWidth/picHeight;
-    double width = height*aspectratio;
 
-    transpover2movingna(){
+    /**
+     * size of the panel adjusted by the height
+     */
+    double height = 400,width = height*aspectratio;
+
+    /**
+     * Method to run after triggering the Timer
+     * @param e
+     */
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+        //if the object reaches the width, negate the speed
+        if(x>=width|x<0)xspeed= - xspeed;
+        //move the original x by the xspeed
+        x+=xspeed;
+
+        //draw the next frame
+        repaint();
+    }
+
+    transpover2moving(){
         setSize((int)width,(int)height);
     }
 
 
     public void paintComponent(Graphics g){
         super.paintComponent(g);
+
+        //para magmukhang nagaalog yung sasakyan
+        y=(int)(Math.random()*3);
+
         Graphics2D g2d= (Graphics2D) g;
         BasicStroke stroke = new BasicStroke(2f);
-       //g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setStroke(stroke);
 
         //TIRES & rims
@@ -56,16 +102,17 @@ public class transpover2movingna extends JPanel implements ActionListener {
         //grills and bumpers
         createGrillsAndBumpers(g2d);
 
-
+        //action to start the timer
+        t.start();
 
     }
 
 
 
     public void createTires(Graphics2D g2d){
-        ArrayList<Ellipse2D.Double> tires = new ArrayList<>();
-        tires.add(new Ellipse2D.Double(getX(118), getY(323), getY(504-320), getY(504-323)));
-        tires.add(new Ellipse2D.Double(getX(587), getY(323), getY(504-320), getY(504-323)));
+        ArrayList<Ellipse2D> tires = new ArrayList<>();
+        tires.add(createEllipse(118, 323,504-320, 504-320));
+        tires.add(createEllipse(587, 323, 504-320,  504-320));
 
         g2d.setColor(Color.black);
         for(Ellipse2D wheel: tires){
@@ -76,9 +123,10 @@ public class transpover2movingna extends JPanel implements ActionListener {
     }
 
     public void createRims(Graphics2D g2d){
-        ArrayList<Ellipse2D.Double> rims = new ArrayList<>();
-        rims.add(new Ellipse2D.Double(getX(157), getY(360), getY(462-359), getY(462-359)));
-        rims.add(new Ellipse2D.Double(getX(625), getY(360), getY(462-359), getY(462-359)));
+        ArrayList<Ellipse2D> rims = new ArrayList<>();
+        rims.add(createEllipse(157,360,462-359,462-359));
+        rims.add(createEllipse(625,360,462-359,462-359));
+
         g2d.setColor(new Color(210,210,210));
         for(Ellipse2D rim: rims){
             g2d.fill(rim);
@@ -87,10 +135,10 @@ public class transpover2movingna extends JPanel implements ActionListener {
     }
 
     public void createInnerRim(Graphics2D g2d){
-        double scale = getY(436-384);
-        ArrayList<Ellipse2D.Double> innerRims = new ArrayList<>();
-        innerRims.add(new Ellipse2D.Double(getX(182), getY(384),scale,scale));
-        innerRims.add(new Ellipse2D.Double(getX(650), getY(384),scale,scale));
+        int scale = 436-384;
+        ArrayList<Ellipse2D> innerRims = new ArrayList<>();
+        innerRims.add(createEllipse(182, 384,scale,scale));
+        innerRims.add(createEllipse(650,384,scale,scale));
 
         for(Ellipse2D innerRim:innerRims){
             g2d.setColor(new Color(49,49,49));
@@ -213,7 +261,8 @@ public class transpover2movingna extends JPanel implements ActionListener {
         Line2D.Double antennaLine = createLine(686,214,672,83);
         g2d.draw(antennaLine);
 
-        Ellipse2D.Double antennaBall = new Ellipse2D.Double(getX(661),getY(66),getY(20),getY(20));
+        Ellipse2D antennaBall =createEllipse(661,66,20,20);
+                ///new Ellipse2D.Double(getX(661),getY(66),getX(20),getY(20));
         g2d.setColor(new Color(103,103,103));
         g2d.fill(antennaBall);
         g2d.setColor(Color.black);
@@ -337,19 +386,35 @@ public class transpover2movingna extends JPanel implements ActionListener {
 
 
 
-        t.start();
+
     }
 
 
     public double getY(double y){
-        return (height/picHeight)*y;
+        return (height/picHeight)*y+this.y;
     }
+
+
     public double getX(double x){
-        return this.x+ (width/picWidth)*x;
+        //the this.x is added pag nirerepaint.
+        if(xspeed<0) {
+           return width+( this.x - (((width / picWidth) * x)));
+        }
+         return this.x + (width / picWidth) * x;
+
     }
 
     public Rectangle2D.Double createRect(int x, int y, int w, int h){
-        return new Rectangle2D.Double(getX(x),getY(y),w*(width/picWidth),h*(width/picWidth));
+
+        if(xspeed<0)
+            return new Rectangle2D.Double((getX(x)-getY(w)),getY(y),getY((w*(width/picWidth))),getY((h*(width/picWidth))));
+        return new Rectangle2D.Double(getX(x),getY(y),getY((w*(width/picWidth))),getY((h*(width/picWidth))));
+    }
+
+    public Ellipse2D createEllipse(int x,int y, int w, int h){
+        if(xspeed<0)
+             return new Ellipse2D.Double(getX(x)-getY((w)),getY(y),getY(w),getY(h));
+        return new Ellipse2D.Double(getX(x),getY(y),getY(w),getY(h));
     }
 
     public Line2D.Double createLine(int x1, int y1, int x2, int y2){
@@ -367,11 +432,8 @@ public class transpover2movingna extends JPanel implements ActionListener {
     public static void main(String args[]){
 
         JFrame jframe = new JFrame();
-
-        transpover2movingna frame = new transpover2movingna();
-        //frame.setUndecorated(true);
-        //frame.setBackground(new Color(1.0f,1.0f,1.0f,0.5f));
-
+        transpover2moving frame = new transpover2moving();
+        jframe.setMinimumSize(new Dimension(frame.getWidth()*2,frame.getHeight()));
         jframe.add(frame);
         jframe.pack();
         jframe.setVisible(true);
@@ -388,9 +450,5 @@ public class transpover2movingna extends JPanel implements ActionListener {
 
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        x+=10;
-        repaint();
-    }
+
 }
