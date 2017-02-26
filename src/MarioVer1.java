@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * Created by jude8 on 2/3/2017.
  */
 public class MarioVer1 extends Frame {
-    static int height =720;
+    static int height =512;
     static int width = height;
     static int framePixelHeight = 30;
     static int framePixelWidth = 30;
