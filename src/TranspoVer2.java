@@ -1,6 +1,8 @@
 
 
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.geom.*;
 import java.util.ArrayList;
 
@@ -363,6 +365,15 @@ public class TranspoVer2 extends Frame {
        // frame.setUndecorated(true);
         //frame.setBackground(new Color(1.0f,1.0f,1.0f,0.5f));
         frame.setVisible(true);
+
+
+        frame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                super.windowClosing(e);
+                System.exit(0);
+            }
+        });
 
 
 
