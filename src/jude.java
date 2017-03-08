@@ -7,7 +7,7 @@ import java.util.ArrayList;
 /**
  * Created by judeBismonte on 2/23/2017.
  */
-public class SelfPortrait extends Frame {
+public class jude extends Frame {
 
     int picWidth = 750, picHeight = 605;
     double aspectRatio = picWidth / picHeight;
@@ -28,8 +28,26 @@ public class SelfPortrait extends Frame {
         createEyes(g2d);
         //AffineTransform move = new AffineTransform();
         //move.
-
-
+        GeneralPath shadow = new GeneralPath();
+        shadow.moveTo(302, 284);
+        shadow.quadTo(311, 313, 324, 323);
+        shadow.lineTo(329, 335);
+        shadow.quadTo(365, 368, 440, 350);
+        shadow.quadTo(444, 355, 452, 367);
+        shadow.quadTo(478, 362, 486, 334);
+        shadow.quadTo(488, 318, 497, 289);
+        shadow.lineTo(498, 271);
+        shadow.lineTo(492, 269);
+        shadow.quadTo(516, 201, 481, 163);
+        shadow.quadTo(480, 128, 468, 117);
+        shadow.quadTo(477, 142, 469, 184);
+        shadow.lineTo(483, 190);
+        shadow.quadTo(492, 247, 463, 318);
+        shadow.lineTo(458, 323);
+        shadow.quadTo(396, 360, 331, 320);
+        shadow.lineTo(302, 281);
+        g2d.setPaint(new Color(206,148,128));
+        g2d.fill(shadow);
     }
 
     public void createFace(Graphics2D g2d) {
@@ -37,26 +55,6 @@ public class SelfPortrait extends Frame {
 //        move(leftEye,327,208);
 //        quad(leftEye,334,207,344,201);
 //        quad(leftEye,356,198,368,206);
-//         GeneralPath shadow = new GeneralPath();
-//        shadow.moveTo(302, 284);
-//        shadow.quadTo(311, 313, 324, 323);
-//        shadow.lineTo(329, 335);
-//        shadow.quadTo(365, 368, 440, 350);
-//        shadow.quadTo(444, 355, 452, 367);
-//        shadow.quadTo(478, 362, 486, 334);
-//        shadow.quadTo(488, 318, 497, 289);
-//        shadow.lineTo(498, 271);
-//        shadow.lineTo(492, 269);
-//        shadow.quadTo(516, 201, 481, 163);
-//        shadow.quadTo(480, 128, 468, 117);
-//        shadow.quadTo(477, 142, 469, 184);
-//        shadow.lineTo(483, 190);
-//        shadow.quadTo(492, 247, 463, 318);
-//        shadow.lineTo(458, 323);
-//        shadow.quadTo(396, 360, 331, 320);
-//        shadow.lineTo(302, 281);
-//        g2d.setPaint(new Color(206,148,128));
-//        g2d.fill(shadow);
 
         Ellipse2D Mole = createEllipse(393, 208, 4, 4);
 
@@ -111,18 +109,20 @@ public class SelfPortrait extends Frame {
 
         //
         GeneralPath nose = new GeneralPath();
-        move(nose, 413, 231);
-        quad(nose, 437, 262, 415, 265);
-        quad(nose, 406, 261, 398, 264);
-        quad(nose, 395, 265, 377, 258);
-        quad(nose, 372, 256, 370, 258);
-        line(nose, 371, 262);
-        quad(nose, 362, 264, 362, 260);
-        line(nose, 362, 257);
-        quad(nose, 365, 252, 370, 252);
-        quad(nose, 376, 256, 397, 257);
-        quad(nose, 411, 253, 417, 259);
-        quad(nose, 425, 258, 411, 233);
+        move(nose, 370, 244);
+        quad(nose, 368, 253, 378, 251);
+        quad(nose, 383, 248, 388, 252);
+        quad(nose, 401, 254, 406, 251);
+        quad(nose, 413, 249, 417, 253);
+        quad(nose, 423, 254, 420, 246);
+        quad(nose, 416, 239, 415, 234);
+        quad(nose, 413, 232, 412, 235);
+        line(nose, 416, 243);
+        quad(nose, 419, 248, 412, 247);
+        quad(nose, 406, 245, 402, 249);
+        quad(nose, 397, 250, 390, 249);
+        quad(nose, 386, 245, 378, 247);
+        quad(nose, 373, 248, 370, 244);
 
         GeneralPath mouth = new GeneralPath();
         move(mouth, 355, 284);
@@ -524,7 +524,7 @@ public class SelfPortrait extends Frame {
 
 
     public static void main(String args[]) {
-        SelfPortrait selfPortrait = new SelfPortrait();
+        jude selfPortrait = new jude();
         selfPortrait.setSize(746, 570);
         selfPortrait.setLocation(25, 172);
         //selfPortrait.setUndecorated(true);
