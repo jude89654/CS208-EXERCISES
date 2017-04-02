@@ -49,12 +49,16 @@ public class DVDScreensaver extends JPanel implements ActionListener {
         if(x>this.getWidth()-ballWidth|x==0){
             xspeed=-xspeed;
             colorIndex = (int)(Math.random()*colors.length);
-            letterIndex = (int)(Math.random()*colors.length);
+            do {
+                letterIndex = (int) (Math.random() * colors.length);
+            }while(letterIndex==colorIndex);
         }
         if(y>this.getHeight()-ballHeight|y==0){
             yspeed=-yspeed;
              colorIndex = (int)(Math.random()*colors.length);
-             letterIndex = (int)(Math.random()*colors.length);
+             do {
+                letterIndex = (int) (Math.random() * colors.length);
+            }while(letterIndex==colorIndex);
         }
 
         x+=xspeed;
