@@ -1,4 +1,5 @@
 import java.awt.*;
+
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.geom.*;
@@ -7,7 +8,7 @@ import java.util.ArrayList;
 /**
  * Created by judeBismonte on 2/23/2017.
  */
-public class SelfPortrait extends Frame {
+public class SelfPortrait_Bismonte extends Frame {
 
     int picWidth = 750, picHeight = 605;
     double aspectRatio = picWidth / picHeight;
@@ -20,8 +21,8 @@ public class SelfPortrait extends Frame {
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         BasicStroke bs = new BasicStroke(3.0f);
         g2d.setStroke(bs);
-        createEar(g2d);
-        createhead(g2d);
+        //createEar(g2d);
+        //createhead(g2d);
         createFace(g2d);
         createPoloAndNeckTie(g2d);
         createToga(g2d);
@@ -37,26 +38,114 @@ public class SelfPortrait extends Frame {
 //        move(leftEye,327,208);
 //        quad(leftEye,334,207,344,201);
 //        quad(leftEye,356,198,368,206);
-//         GeneralPath shadow = new GeneralPath();
-//        shadow.moveTo(302, 284);
-//        shadow.quadTo(311, 313, 324, 323);
-//        shadow.lineTo(329, 335);
-//        shadow.quadTo(365, 368, 440, 350);
-//        shadow.quadTo(444, 355, 452, 367);
-//        shadow.quadTo(478, 362, 486, 334);
-//        shadow.quadTo(488, 318, 497, 289);
-//        shadow.lineTo(498, 271);
-//        shadow.lineTo(492, 269);
-//        shadow.quadTo(516, 201, 481, 163);
-//        shadow.quadTo(480, 128, 468, 117);
-//        shadow.quadTo(477, 142, 469, 184);
-//        shadow.lineTo(483, 190);
-//        shadow.quadTo(492, 247, 463, 318);
-//        shadow.lineTo(458, 323);
-//        shadow.quadTo(396, 360, 331, 320);
-//        shadow.lineTo(302, 281);
-//        g2d.setPaint(new Color(206,148,128));
-//        g2d.fill(shadow);
+
+
+
+
+         GeneralPath face = new GeneralPath();
+        face.moveTo(428, 106);
+        face.curveTo(470, 108, 472, 130, 480, 142);
+        face.curveTo(482, 161, 488, 170, 493, 180);
+        face.curveTo(500, 199, 504, 217, 500, 233);
+        face.curveTo(496, 249, 494, 264, 496, 276);
+        face.curveTo(497, 273, 499, 272, 499, 266);
+        face.curveTo(502, 245, 505, 227, 510, 219);
+        face.curveTo(524, 195, 531, 213, 530, 216);
+        face.curveTo(533, 233, 527, 243, 523, 252);
+        face.curveTo(523, 261, 519, 268, 516, 274);
+        face.curveTo(516, 287, 505, 286, 498, 287);
+        face.curveTo(496, 301, 487, 316, 489, 323);
+        face.curveTo(486, 346, 475, 352, 466, 359);
+        face.curveTo(446, 378, 404, 397, 375, 418);
+        face.lineTo(371, 416);
+        face.curveTo(355, 394, 337, 374, 330, 349);
+        face.curveTo(327, 329, 320, 324, 315, 311);
+        face.curveTo(309, 302, 305, 291, 302, 281);
+        face.curveTo(294, 305, 287, 278, 288, 269);
+        face.curveTo(290, 260, 287, 255, 287, 249);
+        face.curveTo(278, 226, 281, 200, 288, 198);
+        face.curveTo(294, 203, 293, 217, 296, 227);
+        face.curveTo(294, 197, 300, 177, 310, 161);
+        face.curveTo(309, 127, 336, 114, 349, 106);
+        face.curveTo(375, 98, 413, 109, 428, 106);
+
+        g2d.setPaint(new Color(235,182,158));
+        g2d.fill(face);
+
+        GeneralPath shadow2 = new GeneralPath();
+        shadow2.moveTo(388, 104);
+        shadow2.curveTo(404, 110, 420, 116, 441, 118);
+        shadow2.curveTo(440, 139, 467, 147, 463, 168);
+        shadow2.curveTo(446, 177, 420, 165, 410, 195);
+        shadow2.curveTo(416, 201, 424, 190, 435, 190);
+        shadow2.curveTo(443, 192, 457, 193, 455, 202);
+        shadow2.curveTo(423, 200, 439, 209, 431, 213);
+        shadow2.curveTo(443, 230, 455, 220, 467, 223);
+        shadow2.curveTo(489, 212, 478, 237, 474, 243);
+        shadow2.curveTo(470, 256, 465, 264, 460, 274);
+        shadow2.curveTo(476, 274, 452, 295, 454, 316);
+        shadow2.curveTo(452, 316, 450, 315, 443, 321);
+        shadow2.curveTo(430, 334, 409, 355, 391, 349);
+        shadow2.curveTo(387, 345, 381, 345, 377, 347);
+        shadow2.curveTo(334, 330, 321, 312, 314, 285);
+        shadow2.lineTo(313, 289);
+        shadow2.curveTo(313, 267, 310, 262, 307, 252);
+        shadow2.curveTo(298, 232, 311, 210, 302, 202);
+        shadow2.lineTo(306, 200);
+        shadow2.curveTo(305, 183, 311, 172, 315, 161);
+        shadow2.curveTo(318, 120, 350, 114, 366, 104);
+        shadow2.curveTo(326, 88, 292, 131, 296, 200);
+        shadow2.curveTo(295, 211, 294, 229, 302, 280);
+        shadow2.curveTo(281, 334, 318, 364, 339, 372);
+        shadow2.curveTo(349, 369, 335, 382, 363, 387);
+        shadow2.curveTo(366, 381, 360, 380, 358, 377);
+        shadow2.curveTo(364, 376, 370, 375, 371, 372);
+        shadow2.curveTo(378, 375, 385, 378, 394, 375);
+        shadow2.curveTo(384, 385, 397, 380, 398, 383);
+        shadow2.curveTo(413, 380, 428, 379, 435, 382);
+        shadow2.curveTo(613, 345, 701, 56, 388, 104);
+
+        shadow2.moveTo(395, 209);
+        shadow2.curveTo(398, 238, 426, 245, 414, 255);
+        shadow2.curveTo(392, 247, 387, 256, 384, 260);
+        shadow2.curveTo(388, 268, 409, 256, 399, 270);
+        shadow2.curveTo(397, 283, 426, 287, 407, 297);
+        shadow2.curveTo(420, 299, 410, 305, 421, 302);
+        shadow2.curveTo(443, 295, 440, 277, 426, 273);
+        shadow2.curveTo(408, 263, 427, 262, 428, 256);
+        shadow2.curveTo(436, 249, 416, 239, 415, 226);
+        shadow2.curveTo(409, 202, 402, 205, 395, 209);
+
+        Area Shadow2 = new Area(shadow2);
+        Area Face = new Area(face);
+        Shadow2.intersect(Face);
+        g2d.setPaint(new Color(179,121,103));
+        g2d.fill(Shadow2);
+
+
+        GeneralPath shadow1 = new GeneralPath();
+        shadow1.moveTo(436, 107);
+        shadow1.curveTo(467, 118, 464, 139, 475, 143);
+        shadow1.curveTo(475, 155, 479, 161, 481, 170);
+        shadow1.curveTo(481, 190, 493, 198, 496, 206);
+        shadow1.curveTo(492, 209, 490, 206, 489, 204);
+        shadow1.curveTo(491, 224, 487, 234, 484, 246);
+        shadow1.curveTo(481, 259, 475, 274, 480, 280);
+        shadow1.curveTo(475, 300, 464, 316, 464, 326);
+        shadow1.curveTo(454, 346, 439, 362, 425, 367);
+        shadow1.curveTo(427, 377, 443, 366, 450, 357);
+        shadow1.curveTo(466, 351, 458, 362, 449, 364);
+        shadow1.curveTo(454, 365, 460, 363, 465, 362);
+        shadow1.curveTo(676, 203, 516, 79, 436, 107);
+        g2d.setPaint(new Color(100,66,61));
+
+        Area Shadow1 = new Area(shadow1);
+
+        Shadow1.intersect(Face);
+        g2d.fill(Shadow1);
+
+
+
 
         Ellipse2D Mole = createEllipse(393, 208, 4, 4);
 
@@ -111,18 +200,19 @@ public class SelfPortrait extends Frame {
 
         //
         GeneralPath nose = new GeneralPath();
-        move(nose, 413, 231);
-        quad(nose, 437, 262, 415, 265);
-        quad(nose, 406, 261, 398, 264);
-        quad(nose, 395, 265, 377, 258);
-        quad(nose, 372, 256, 370, 258);
-        line(nose, 371, 262);
-        quad(nose, 362, 264, 362, 260);
-        line(nose, 362, 257);
-        quad(nose, 365, 252, 370, 252);
-        quad(nose, 376, 256, 397, 257);
-        quad(nose, 411, 253, 417, 259);
-        quad(nose, 425, 258, 411, 233);
+        nose.moveTo(414, 233);
+        nose.curveTo(444, 261, 414, 267, 400, 259);
+        nose.curveTo(392, 265, 382, 260, 376, 255);
+        nose.curveTo(363, 267, 348, 249, 365, 238);
+        nose.curveTo(350, 254, 366, 260, 372, 255);
+        nose.curveTo(360, 256, 359, 246, 378, 254);
+        nose.curveTo(387, 262, 393, 260, 401, 257);
+        nose.curveTo(418, 249, 416, 259, 406, 259);
+        nose.curveTo(432, 265, 425, 246, 414, 233);
+        g2d.setColor(new Color(92, 32, 24));
+        g2d.fill(nose);
+
+
 
         GeneralPath mouth = new GeneralPath();
         move(mouth, 355, 284);
@@ -170,7 +260,19 @@ public class SelfPortrait extends Frame {
         g2d.fill(nose);
         g2d.setStroke(new BasicStroke(0.5f));
 
-
+        GeneralPath hair = new GeneralPath();
+        hair.moveTo(288, 198);
+        hair.curveTo(290, 178, 286, 154, 294, 138);
+        hair.curveTo(291, 108, 306, 91, 316, 85);
+        hair.curveTo(323, 61, 340, 57, 352, 53);
+        hair.curveTo(382, 28, 415, 34, 429, 47);
+        hair.curveTo(494, 56, 514, 93, 516, 120);
+        hair.curveTo(531, 153, 520, 182, 519, 212);
+        hair.curveTo(463, 465, 290, 302, 288, 198);
+        Area Hair = new Area(hair);
+        Hair.subtract(Face);
+        g2d.setPaint(Color.BLACK);
+        g2d.fill(Hair);
     }
 
     public void createEyes(Graphics2D g2d) {
@@ -524,13 +626,13 @@ public class SelfPortrait extends Frame {
 
 
     public static void main(String args[]) {
-        SelfPortrait selfPortrait = new SelfPortrait();
-        selfPortrait.setSize(746, 570);
-        selfPortrait.setLocation(25, 172);
-        //selfPortrait.setUndecorated(true);
-        selfPortrait.setBackground(new Color(137, 136, 142));
-        selfPortrait.setVisible(true);
-        selfPortrait.addWindowListener(new WindowAdapter() {
+        SelfPortrait_Bismonte selfPortraitBismonte = new SelfPortrait_Bismonte();
+        selfPortraitBismonte.setSize(746, 570);
+        selfPortraitBismonte.setLocation(25, 172);
+        //selfPortraitBismonte.setUndecorated(true);
+        selfPortraitBismonte.setBackground(new Color(137, 136, 142));
+        selfPortraitBismonte.setVisible(true);
+        selfPortraitBismonte.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
                 super.windowClosing(e);
