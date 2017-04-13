@@ -1,4 +1,4 @@
-
+package Transportation;
 
 import java.awt.*;
 import java.awt.event.WindowAdapter;
@@ -30,9 +30,15 @@ public class TranspoVer2 extends Frame {
         Graphics2D g2d= (Graphics2D) g;
         BasicStroke stroke = new BasicStroke(2f);
        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        g2d.setStroke(stroke);
+       g2d.setStroke(stroke);
 
         //TIRES & rims
+
+        createCar(g2d);
+
+    }
+
+    public void createCar(Graphics2D g2d){
         createTires(g2d);
         createRims(g2d);
         createInnerRim(g2d);
@@ -51,8 +57,6 @@ public class TranspoVer2 extends Frame {
 
         //grills and bumpers
         createGrillsAndBumpers(g2d);
-
-
 
     }
 

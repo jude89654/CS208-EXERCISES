@@ -1,3 +1,5 @@
+package SelfPortrait;
+
 import java.awt.*;
 
 import java.awt.event.WindowAdapter;

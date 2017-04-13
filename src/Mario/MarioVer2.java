@@ -1,3 +1,6 @@
+package Mario;
+
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -9,18 +12,21 @@ import java.util.ArrayList;
 /**
  * Created by jude8 on 2/3/2017.
  */
-public class MarioVer2 extends Frame {
-    static int height =512;
-    static int width = height;
+public class MarioVer2 extends JPanel  {
+    static int marioHeight =512;
+    static int width = marioHeight;
     static int framePixelHeight = 30;
     static int framePixelWidth = 30;
-    static double scale = height / framePixelHeight;
+    static double scale = marioHeight / framePixelHeight;
     static Color black = Color.pink;
     static Color orange = new Color(252,225,204);
     static Color red = Color.RED;
 
 
-    public void paint(Graphics g) {
+
+
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
 
         g2d.setBackground(Color.ORANGE);
@@ -28,6 +34,15 @@ public class MarioVer2 extends Frame {
         g2d.setStroke(basicStroke);
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
 
+        g2d.translate(0,0);
+        g2d.scale(0.5,0.5);
+        createMario(g2d);
+
+
+
+    }
+
+    public void createMario(Graphics2D g2d){
         //strokes for orange
         g2d.setColor(orange);
          //orange rect
@@ -182,7 +197,7 @@ public class MarioVer2 extends Frame {
         g2d.fill(orangePath);
 
 
-        
+
         ///RED
         g2d.setColor(red);
         ArrayList<Rectangle2D.Double> redRect = new ArrayList<>();
@@ -222,7 +237,7 @@ public class MarioVer2 extends Frame {
         g2d.fill(redHatPath);
 
 
-        
+
         ArrayList<Line2D.Double> linesForRedLeftSleeve = new ArrayList<>();
         //left sleeve
         linesForRedLeftSleeve.add(createLine(14,16,16,16));
@@ -249,7 +264,7 @@ public class MarioVer2 extends Frame {
         }
         g2d.draw(redLeftSleeve);
         g2d.fill(redLeftSleeve);
-        
+
         //shirt
         ArrayList<Line2D.Double> linesForRedShirt = new ArrayList<>();
         linesForRedShirt.add(createLine(19,17,21,17));
@@ -326,7 +341,7 @@ public class MarioVer2 extends Frame {
 
       //  g2d.setColor(Color.red);
 
-        
+
          g2d.setColor(Color.black);
 
 
@@ -510,8 +525,6 @@ public class MarioVer2 extends Frame {
             g2d.draw(createRect(blackDoubleArray[0], blackDoubleArray[1]));
 
         }
-
-
     }
 
     public static Line2D.Double createLine(int x1, int y1, int x2, int y2) {
@@ -529,13 +542,14 @@ public class MarioVer2 extends Frame {
 
 
     public static void main(String args[]) {
-        MarioVer2 mario = new MarioVer2();
-        //mario.setTitle("MARIO");
-        mario.setSize(width, height);
-        mario.setVisible(true);
-   //     mario.setBackground(Color.ORANGE);
+        Frame frame = new Frame();
+        frame.setMinimumSize(new Dimension(500,500));
+       MarioVer2 mario = new MarioVer2();
+        frame.add(mario);
+        frame.setVisible(true);
 
-        mario.addWindowListener(new WindowAdapter() {
+   //     mario.setBackground(Color.ORANGE);
+        frame.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
                 super.windowClosing(e);

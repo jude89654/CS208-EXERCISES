@@ -1,6 +1,5 @@
+package Transportation;
 
-
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -8,8 +7,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.geom.*;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -57,7 +54,7 @@ public class transpover2moving extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         //if the object reaches the width, negate the speed
-        if (x >= width | x < 0) xspeed = -xspeed;
+        if (x >= width*(2) | x < -(width)) xspeed = -xspeed;
         //move the original x by the xspeed
         x += xspeed;
 
