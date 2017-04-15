@@ -42,6 +42,8 @@ public class Animation_Bismonte extends JPanel implements ActionListener {
     static Image goombaLeft, goombaRight;
     static Image pipe;
     static Image plantOpen, plantClose;
+    static Image hills;
+
 
 
 //    ArrayList<Object> banana  = new ArrayList<>();
@@ -95,6 +97,11 @@ public class Animation_Bismonte extends JPanel implements ActionListener {
         } catch (Exception e) {
             System.out.println("pipe IMAGE NOT FOUND");
         }
+         try {
+            hills = ImageIO.read(this.getClass().getResource("hillbackground.png"));
+        } catch (Exception e) {
+            System.out.println("pipe IMAGE NOT FOUND");
+        }
     }
 
     Timer t = new Timer(20, this);
@@ -145,6 +152,8 @@ public class Animation_Bismonte extends JPanel implements ActionListener {
         g2d.setStroke(basicStroke);
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
+        drawHills(g2d);
+
         drawPlant(g2d);
         drawPipe(g2d);
 
@@ -159,11 +168,11 @@ public class Animation_Bismonte extends JPanel implements ActionListener {
         createBlock(g2d);
 
 
-        drawFloor(g2d);
-
-        drawCloud(g2d);
-
-        drawName(g2d);
+//        drawFloor(g2d);
+//
+//        drawCloud(g2d);
+//
+       drawName(g2d);
 
 
         t.start();
@@ -172,6 +181,12 @@ public class Animation_Bismonte extends JPanel implements ActionListener {
 
     }
 
+    public void drawHills(Graphics2D g2d){
+        g2d.setTransform(original);
+        g2d.translate(0,390);
+        g2d.scale(0.2,0.2);
+        g2d.drawImage(hills,0,0,(int)(63*scale),(int)(48*scale),null);
+    }
 
     public void drawPlant(Graphics2D g2d) {
         // g2d.transform(original);
